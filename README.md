@@ -13,15 +13,23 @@ Left would be the stock symbols.  Top is each year.  Each cell will have the per
 
 - [CsvHelper](https://www.nuget.org/packages/CsvHelper)
 - [MediatR.Extensions.Microsoft.DependencyInjection](https://www.nuget.org/packages/MediatR.Extensions.Microsoft.DependencyInjection)
-- [Microsoft.CodeAnalysis.NetAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.NetAnalyzers)
 - [Microsoft.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore)
 - [Microsoft.EntityFrameworkCore.Sqlite](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Sqlite)
 - [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http)
-- [Microsoft.NET.Test.Sdk](Microsoft.NET.Test.Sdk) - needed for Visual Studio IDE and xUnit
-- [Moq](https://www.nuget.org/packages/Moq)
+
+### Roslyn Analyzers
+
 - [StyleCop.Analyzers](https://www.nuget.org/packages/StyleCop.Analyzers)
+- <s>[Microsoft.CodeAnalysis.NetAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.NetAnalyzers)</s>
+  - Right click Project file > Properties > Code Analysis > "Enable .NET Analyzers" = checked.  (default is checked for C# 9.0)
+- Hmm, maybe [xunit.analyzers](https://www.nuget.org/packages/xunit.analyzers)
+
+### Unit testing
+
 - [xUnit](https://www.nuget.org/packages/xunit)
 - [xUnit.runner.visualstudio](https://www.nuget.org/packages/xunit.runner.visualstudio)
+- [Moq](https://www.nuget.org/packages/Moq)
+- [Microsoft.NET.Test.Sdk](Microsoft.NET.Test.Sdk) - needed for Visual Studio IDE and xUnit
 
 ### Visual Studio Settings
 
