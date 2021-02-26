@@ -3,10 +3,14 @@
 // </copyright>
 namespace Z011.Application
 {
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using MediatR;
+    using Microsoft.EntityFrameworkCore;
+    using Z011.Domain.Entities;
 
     /// <summary>
     /// Stock change grid class.
@@ -29,7 +33,7 @@ namespace Z011.Application
             /// <summary>
             /// Gets headings for the percentages.
             /// </summary>
-            public IEnumerable<string> Headings { get; internal set; }
+            public IEnumerable<DateTime> Headings { get; internal set; }
 
             /// <summary>
             /// Gets list of rows.
@@ -50,7 +54,7 @@ namespace Z011.Application
             /// <summary>
             /// Gets a list of percentages for the row.
             /// </summary>
-            public IEnumerable<double> Percentages { get; internal set; }
+            public IEnumerable<double?> Percentages { get; internal set; }
         }
 
         /// <summary>
@@ -58,11 +62,55 @@ namespace Z011.Application
         /// </summary>
         public class Handler : IRequestHandler<Query, Result>
         {
+            private readonly IDbContextFactory<EntityDbContext> contextFactory;
+
+            /// <summary>
+            /// Initializes a new instance of the <see cref="Handler"/> class.
+            /// </summary>
+            /// <param name="contextFactory">IDbContextFactory.</param>
+            public Handler(IDbContextFactory<EntityDbContext> contextFactory)
+            {
+                this.contextFactory = contextFactory;
+            }
+
             /// <inheritdoc/>
             public async Task<Result> Handle(Query request, CancellationToken cancellationToken)
             {
-                //// TODO: do something.
-                return await Task.FromResult<Result>(new Result());
+                using var db = this.contextFactory.CreateDbContext();
+
+                var prices = await db.StockPrices
+                                .Where(p => p.Frequency == Frequency.Yearly)
+                                .Select(p => new { p.Stock.Symbol, p.Period, Close = p.AdjClose, Open = (((p.AdjClose - p.Close) / p.Close) + 1) * p.Open })
+                                .OrderBy(p => p.Symbol).ThenBy(p => p.Period)
+                                .ToListAsync(cancellationToken);
+
+                var headings = prices.Select(p => p.Period).Distinct().OrderBy(p => p).ToList();
+                var headingIndex = new Dictionary<DateTime, int>(headings.Select((d, number) => new KeyValuePair<DateTime, int>(d, number++)));
+
+                var rows = new List<Row>();
+                string lastSymbol = string.Empty;
+                double? lastOpen = null;
+                double?[] percentages = null;
+
+                foreach (var price in prices)
+                {
+                    if (price.Symbol != lastSymbol)
+                    {
+                        lastSymbol = price.Symbol;
+                        lastOpen = price.Open;
+                        percentages = new double?[headings.Count];
+                        rows.Add(new Row
+                        {
+                            Symbol = price.Symbol,
+                            Percentages = percentages,
+                        });
+                    }
+
+                    percentages[headingIndex[price.Period]] = (price.Close - lastOpen) / lastOpen;
+                    lastOpen = price.Close;
+                }
+
+                return new Result() { Headings = headings, Rows = rows };
             }
         }
     }

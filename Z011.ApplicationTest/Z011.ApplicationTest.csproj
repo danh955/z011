@@ -32,6 +32,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Z011.Application\Z011.Application.csproj" />
+    <ProjectReference Include="..\Z011.Domain\Z011.Domain.csproj" />
+    <ProjectReference Include="..\Z011.TestHelper\Z011.TestHelper.csproj" />
   </ItemGroup>
 
 </Project>
