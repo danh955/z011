@@ -88,16 +88,16 @@ namespace Z011.Application
                 var headingIndex = new Dictionary<DateTime, int>(headings.Select((d, number) => new KeyValuePair<DateTime, int>(d, number++)));
 
                 var rows = new List<Row>();
-                string lastSymbol = string.Empty;
-                double? lastOpen = null;
+                string symbol = string.Empty;
+                double open = 0;
                 double?[] percentages = null;
 
                 foreach (var price in prices)
                 {
-                    if (price.Symbol != lastSymbol)
+                    if (price.Symbol != symbol)
                     {
-                        lastSymbol = price.Symbol;
-                        lastOpen = price.Open;
+                        symbol = price.Symbol;
+                        open = price.Open;
                         percentages = new double?[headings.Count];
                         rows.Add(new Row
                         {
@@ -106,8 +106,8 @@ namespace Z011.Application
                         });
                     }
 
-                    percentages[headingIndex[price.Period]] = (price.Close - lastOpen) / lastOpen;
-                    lastOpen = price.Close;
+                    percentages[headingIndex[price.Period]] = (price.Close - open) / open;
+                    open = price.Close;
                 }
 
                 return new Result() { Headings = headings, Rows = rows };
