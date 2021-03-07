@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Z011.TestHelper", "Z011.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Z011.Infrastructure", "Z011.Infrastructure\Z011.Infrastructure.csproj", "{57C84926-E664-4627-844E-D769738AEC90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z011.InfrastructureTest", "Z011.InfrastructureTest\Z011.InfrastructureTest.csproj", "{8FEE6DDE-4F5D-477F-840E-FFC81355A509}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Z011.InfrastructureTest", "Z011.InfrastructureTest\Z011.InfrastructureTest.csproj", "{8FEE6DDE-4F5D-477F-840E-FFC81355A509}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z011.Persistence.SQLite", "Z011.Persistence.SQLite\Z011.Persistence.SQLite.csproj", "{969C9725-6E46-4B46-92C4-D155DBD98B90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{8FEE6DDE-4F5D-477F-840E-FFC81355A509}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FEE6DDE-4F5D-477F-840E-FFC81355A509}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FEE6DDE-4F5D-477F-840E-FFC81355A509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{969C9725-6E46-4B46-92C4-D155DBD98B90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{969C9725-6E46-4B46-92C4-D155DBD98B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{969C9725-6E46-4B46-92C4-D155DBD98B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{969C9725-6E46-4B46-92C4-D155DBD98B90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

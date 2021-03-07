@@ -42,7 +42,7 @@ namespace Z011.Infrastructure.NasdaqSymbols
         /// <returns>String.</returns>
         public async Task<NasdaqSymbolsResult> Handle(NasdaqSymbolsQuery request, CancellationToken cancellationToken)
         {
-            CsvConfiguration csvConfigurationPipe = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = "|" };
+            var csvConfigurationPipe = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = "|" };
 
             var nasdaqSymbolTask = this.GetItemsAsync<NasdaqSymbolDto>(
                    uri: NasdaqListedUri,
@@ -102,14 +102,14 @@ namespace Z011.Infrastructure.NasdaqSymbols
             Func<CsvReader, Titem> createItem,
             CancellationToken cancellationToken)
         {
-            List<Titem> items = new List<Titem>();
+            List<Titem> items = new();
             DateTime fileCreationTime = default;
 
             HttpClient httpClient = this.clientFactory.CreateClient();
             using var responseStream = await httpClient.GetStreamAsync(uri, cancellationToken);
             using var streamReader = new StreamReader(responseStream);
 
-            using CsvReader csv = new CsvReader(streamReader, csvConfiguration);
+            using var csv = new CsvReader(streamReader, csvConfiguration);
 
             if (!cancellationToken.IsCancellationRequested && await csv.ReadAsync())
             {

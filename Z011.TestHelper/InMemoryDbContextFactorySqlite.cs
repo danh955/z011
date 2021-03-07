@@ -1,4 +1,4 @@
-﻿// <copyright file="InMemoryDbContextFactorySqlite.cs" company="None">
+﻿// <copyright file="InMemoryDbContextFactorySQLite.cs" company="None">
 // Free and open source code.
 // </copyright>
 namespace Z011.TestHelper
@@ -13,7 +13,7 @@ namespace Z011.TestHelper
     /// In memory database context factory with SQLite class.
     /// From: https://www.meziantou.net/testing-ef-core-in-memory-using-sqlite.htm.
     /// </summary>
-    public class InMemoryDbContextFactorySqlite : IDbContextFactory<EntityDbContext>, IDisposable
+    public class InMemoryDbContextFactorySQLite : IDbContextFactory<EntityDbContext>, IDisposable
     {
         private DbConnection connection;
 

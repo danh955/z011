@@ -6,7 +6,7 @@ Left would be the stock symbols.  Top is each year.  Each cell will have the per
 
 ### Using
 
-- [Visual Studio v16.8](https://visualstudio.microsoft.com/vs/preview)
+- [Visual Studio v16.9](https://visualstudio.microsoft.com/vs/preview)
 - [.NET 5.0](https://dotnet.microsoft.com/download/dotnet/5.0)
 
 ### NuGet

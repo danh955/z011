@@ -26,7 +26,7 @@ namespace Z011.ApplicationTest
         [Fact]
         public async Task StockChangeGridHandler()
         {
-            using var contextFactory = new InMemoryDbContextFactorySqlite();
+            using var contextFactory = new InMemoryDbContextFactorySQLite();
             LoadDbWithTestData(contextFactory);
 
             var query = new StockChangeGrid.Query();
@@ -47,7 +47,7 @@ namespace Z011.ApplicationTest
         /// Load database with test data.
         /// </summary>
         /// <param name="contextFactory">InMemoryDbContextFactorySqlite.</param>
-        private static void LoadDbWithTestData(InMemoryDbContextFactorySqlite contextFactory)
+        private static void LoadDbWithTestData(InMemoryDbContextFactorySQLite contextFactory)
         {
             using var db = contextFactory.CreateDbContext();
 
