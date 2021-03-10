@@ -1,7 +1,6 @@
 ﻿// <copyright file="EntityDbContext.cs" company="None">
 // Free and open source code.
 // </copyright>
-
 namespace Z011.Domain.Entities
 {
     using Microsoft.EntityFrameworkCore;
@@ -33,6 +32,7 @@ namespace Z011.Domain.Entities
         /// <inheritdoc/>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(EntityDbContext).Assembly);
         }
     }

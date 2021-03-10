@@ -19,6 +19,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.321">
       <PrivateAssets>all</PrivateAssets>
@@ -28,7 +33,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Z011.Application\Z011.Application.csproj" />
-    <ProjectReference Include="..\Z011.Persistence.SQLite\Z011.Persistence.SQLite.csproj" />
+    <ProjectReference Include="..\Z011.Domain\Z011.Domain.csproj" />
   </ItemGroup>
 
 </Project>
