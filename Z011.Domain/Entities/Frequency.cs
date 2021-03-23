@@ -20,18 +20,23 @@ namespace Z011.Domain.Entities
         Weekly = 2,
 
         /// <summary>
+        /// Monthly.  First day of each month.
+        /// </summary>
+        Monthly = 3,
+
+        /// <summary>
         /// Quarterly.  Starts on 1/1/YYYY, 4/1/YYYY, 7/1/YYYY and 10/1/YYYY.
         /// </summary>
-        Quarterly = 3,
+        Quarterly = 4,
 
         /// <summary>
         /// Half Yearly.  Starts on 1/1/YYYY and 7/1/YYYY.
         /// </summary>
-        HalfYearly = 4,
+        HalfYearly = 5,
 
         /// <summary>
         /// Yearly.  From 1/1/YYYY to 12/31/YYYY.  The date will be set on January 1st.
         /// </summary>
-        Yearly = 5,
+        Yearly = 6,
     }
 }

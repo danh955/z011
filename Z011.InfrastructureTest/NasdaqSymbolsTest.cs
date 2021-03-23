@@ -21,7 +21,7 @@ namespace Z011.InfrastructureTest
         /// </summary>
         /// <returns>Task.</returns>
         [Fact]
-        public async Task NasdaqSymbolsHandler()
+        public async Task NasdaqSymbolsHandlerTest()
         {
             var handler = new NasdaqSymbolsHandler(MockData.MockIHttpClientFactoryForNasdaqSymbols());
             var result = await handler.Handle(new NasdaqSymbolsQuery(), CancellationToken.None);

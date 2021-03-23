@@ -39,7 +39,7 @@ namespace Z011.Infrastructure.NasdaqSymbols
         /// </summary>
         /// <param name="request">The query.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>String.</returns>
+        /// <returns>NasdaqSymbolsResult.</returns>
         public async Task<NasdaqSymbolsResult> Handle(NasdaqSymbolsQuery request, CancellationToken cancellationToken)
         {
             var csvConfigurationPipe = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = "|" };

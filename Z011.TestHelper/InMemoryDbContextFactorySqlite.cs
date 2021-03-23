@@ -1,4 +1,4 @@
-﻿// <copyright file="InMemoryDbContextFactorySQLite.cs" company="None">
+﻿// <copyright file="InMemoryDbContextFactorySqlite.cs" company="None">
 // Free and open source code.
 // </copyright>
 namespace Z011.TestHelper

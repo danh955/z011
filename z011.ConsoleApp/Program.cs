@@ -5,16 +5,14 @@
 namespace Z011.ConsoleApp
 {
     using System;
-    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using MediatR;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Z011.Application;
     using Z011.Application.Extensions;
-    using Z011.Application.StockSymbolUpdater;
+    using Z011.Application.StockPriceUpdater;
     using Z011.Domain.Entities;
     using Z011.Infrastructure.Extensions;
 
@@ -64,10 +62,12 @@ namespace Z011.ConsoleApp
 
         private static async Task MainAppAsync(IMediator mediator, CancellationToken cancellationToken)
         {
-            await mediator.Send(new StockSymbolUpdaterCommand(), cancellationToken);
+            //// await mediator.Send(new StockSymbolUpdaterCommand(), cancellationToken);
 
-            var gridResult = await mediator.Send(new StockChangeGrid.Query(), cancellationToken);
-            Console.WriteLine($"There are {gridResult.Rows.Count()} rows.");
+            await mediator.Send(new StockPriceUpdaterCommand() { Frequency = Frequency.Monthly }, cancellationToken);
+
+            ////var gridResult = await mediator.Send(new StockChangeGrid.Query(), cancellationToken);
+            ////Console.WriteLine($"There are {gridResult.Rows.Count()} rows.");
         }
 
         private static async Task EnsureDatabaseIsCreated(IServiceProvider services)

@@ -19,7 +19,7 @@ namespace Z011.InfrastructureTest.Helper
         /// <returns>IHttpClientFactory.</returns>
         public static IHttpClientFactory MockIHttpClientFactoryForNasdaqSymbols()
         {
-            Dictionary<string, HttpResponseMessage> messages = new Dictionary<string, HttpResponseMessage>
+            Dictionary<string, HttpResponseMessage> messages = new()
             {
                 {
                     "http://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt",
